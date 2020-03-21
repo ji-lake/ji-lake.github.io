@@ -8,10 +8,6 @@
 </head>
 <body>
 
-<nav>
-		<%@ include file="nav.jsp" %>
-	</nav>
-
 <table>
 	<thead>
 		<tr>
@@ -37,6 +33,14 @@
 		
 	</tbody>
 </table>
+
+<div>
+	<c:forEach begin="1" end="${pageNum}" var="num">
+		<span>
+			<a href="/board/listPage?num=${num}">${num}</a>
+		</span>
+	</c:forEach>
+</div>
 
 </body>
 </html>
