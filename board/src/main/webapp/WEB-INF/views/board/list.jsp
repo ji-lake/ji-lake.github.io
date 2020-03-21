@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<nav>
+	<nav>
 		<%@ include file="nav.jsp" %>
 	</nav>
 
