@@ -1,9 +1,14 @@
 package com.board.controller;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +25,24 @@ public class BoardController {
 	@Inject
 	BoardService service;
 	
-	// HOME
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public void getHome() throws Exception {
+	public void getHome(Locale locale, Model model) {
+		
+		/* logger.info("Welcome home! The client locale is {}.", locale); */
+		
+		logger.info("________________Home 으로 이동합니다_______________");
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
 		
 	}
 
