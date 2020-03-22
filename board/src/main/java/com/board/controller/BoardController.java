@@ -19,6 +19,12 @@ public class BoardController {
 	
 	@Inject
 	BoardService service;
+	
+	// HOME
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public void getHome() throws Exception {
+		
+	}
 
 	// 게시물 목록
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

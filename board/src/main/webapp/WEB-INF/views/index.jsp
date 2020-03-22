@@ -12,12 +12,21 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 
+<h3>湖</h3>
+
+<hr>
 
 <p>
 <a href="/board/list">게시물 목록</a><br />
-<a href="/board/write">게시물 작성</a>
+<a href="/board/write">게시물 작성</a><br />
+<a href="/board/home">HOME</a>
 </p>
 
+<br />
+아이디 : <input type="text" placeholder="ID"><br />
+비밀번호 : <input type="password" placeholder="PWD"><br />
+<br />
+<button>로그인</button>
 
 </body>
 </html>
