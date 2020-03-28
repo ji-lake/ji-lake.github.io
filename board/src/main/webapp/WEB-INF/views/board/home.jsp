@@ -1,32 +1,31 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>Home</title>
+<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+	<h1>Hello world!</h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+	<P>The time on the server is ${serverTime}.</P>
 
-<h3>湖</h3>
+	<h3>湖</h3>
 
-<hr>
+	<hr>
 
-<p>
-<a href="/board/list">게시물 목록</a><br />
-<a href="/board/write">게시물 작성</a><br />
-<a href="/board/home">HOME</a>
-</p>
+	<p>
+		<a href="/board/list">게시물 목록</a><br /> <a href="/board/write">게시물
+			작성</a><br /> <a href="/board/home">HOME</a>
+	</p>
 
-<br />
-아이디 : <input type="text" placeholder="ID"><br />
-비밀번호 : <input type="password" placeholder="PWD"><br />
-<br />
-<button>로그인</button>
+	<br />
+	<form>
+		아이디 : <input type="text" placeholder="ID"><br /> 
+		비밀번호 : <input type="password" placeholder="PWD"><br /><br />
+		<button>로그인</button>
+	</form>
 
 </body>
 </html>
