@@ -13,16 +13,15 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	MemberDAO dao;
+	
+	@Override
+	public void signUp(MemberVO mvo) {
+		dao.signUp(mvo);
+	}	
 
 	@Override
-	public boolean loginCheck(MemberVO mvo, HttpSession session) {
-		
-		boolean result = dao.loginCheck(mvo);
-		if (result == true) { //true 일 경우 세션 등록
-			//세션 변수 등록
-		}
-		
-		return result;
+	public MemberVO loginCheck(MemberVO mvo) {		
+		return dao.loginCheck(mvo);
 	}
 
 	@Override
@@ -30,5 +29,4 @@ public class MemberServiceImpl implements MemberService {
 		dao.logout(session);
 		
 	}
-	
 }
