@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +28,8 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-/*	@Autowired
-	BCryptPasswordEncoder passwordEncoder;*/
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -62,13 +63,13 @@ public class MemberController {
 	public String postSignUp(MemberVO mvo) {
 		logger.info("__________회원가입을 성공적으로 완료했습니다__________");
 		
-/*		String inputPass = mvo.getMember_pwd();
+		String inputPass = mvo.getMember_pwd();
 		String pass = passwordEncoder.encode(inputPass);
-		mvo.setMember_pwd(pass);*/
+		mvo.setMember_pwd(pass);
 		
 		memberService.signUp(mvo);
 		
-		return "redirect:/";
+		return "member/login";
 	}
 	
 	// 로그인
