@@ -14,17 +14,20 @@ public class MemberDAOImpl implements MemberDAO {
 	@Autowired
 	SqlSession sql;
 	
+	// 매퍼
+	private static String namespace = "com.board.mappers.memberMapper";
+	
 	// 회원가입
 	@Override
-	public void signUp(MemberVO mvo) {
-		sql.insert("memberMapper.signUp", mvo);
+	public void signUp(MemberVO mvo) throws Exception {
+		sql.insert("namespace" + ".login", mvo);
 	}
 	
 	// 로그인
 	@Override
-	public MemberVO loginCheck(MemberVO mvo) {
+	public MemberVO loginCheck(MemberVO mvo) throws Exception {
 		
-		return sql.selectOne("memberMapper.loginCheck", mvo);
+		return sql.selectOne("namespace" + ".loginCheck", mvo);
 		
 		/* String name = sqlSession.selectOne("memberMapper.loginCheck", mvo); */
 		
@@ -34,7 +37,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	// 로그아웃
 	@Override
-	public void logout(HttpSession session) {
+	public void logout(HttpSession session) throws Exception {
 		session.invalidate();		
 	}
 

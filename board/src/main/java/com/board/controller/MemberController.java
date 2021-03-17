@@ -60,7 +60,7 @@ public class MemberController {
 	
 	// 회원가입 post
 	@RequestMapping(value = "/sign_up", method = RequestMethod.POST)
-	public String postSignUp(MemberVO mvo) {
+	public String postSignUp(MemberVO mvo) throws Exception {
 		logger.info("__________회원가입을 성공적으로 완료했습니다__________");
 		
 		String inputPass = mvo.getMember_pwd();
@@ -72,6 +72,30 @@ public class MemberController {
 		return "member/login";
 	}
 	
+	// 로그인
+	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
+	public String loginCheck(MemberVO mvo, HttpServletRequest req) throws Exception {
+		
+		logger.info("____________로그인을 할 겁니다.___________");
+		
+		logger.info(mvo.getMember_id());
+		logger.info(mvo.getMember_pwd());
+		logger.info("________아이디와 비밀번호는 준비되었습니다._______");
+		
+		HttpSession session = req.getSession();
+		
+		MemberVO login = memberService.loginCheck(mvo);
+		
+		if(login == null) {
+			session.setAttribute("member", null);
+		} else {
+			session.setAttribute("member", login);
+		}
+		
+		return "redirect:/";
+	}
+
+	/*
 	// 로그인
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST) // method를 post로 하고, jsp 에서 form=method=post 로 해주면 url 에 안 나타남
 	public ModelAndView loginCheck(MemberVO mvo, HttpSession session, Locale locale, Model model, HttpServletRequest hsr) {
@@ -85,13 +109,13 @@ public class MemberController {
 		
 		session = hsr.getSession();
 		
-		/* boolean result = memberService.loginCheck(mvo, session); */
+	 // boolean result = memberService.loginCheck(mvo, session); 
 		MemberVO login = memberService.loginCheck(mvo);
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("member/login");
 		
-/*		if(login1 != null) {
+		if(login1 != null) {
 			mav.addObject("msg", "성공");
 			session.setAttribute("login", login1);
 			logger.info("__________로그인 성공________");
@@ -102,7 +126,7 @@ public class MemberController {
 			logger.info("__________로그인 실패________");
 		}
 		
-*/		
+		
 		if(login == null) {
 			mav.addObject("msg", "fail");
 			logger.info("__________로그인 실패________");
@@ -118,10 +142,12 @@ public class MemberController {
 		
 		return mav;
 	}
+
+*/
 	
 	// 로그아웃
 	@RequestMapping("logout")
-	public ModelAndView logout(HttpSession session) {
+	public ModelAndView logout(HttpSession session) throws Exception {
 		
 		memberService.logout(session);
 		ModelAndView mav = new ModelAndView();

@@ -59,10 +59,10 @@
     <h3 class="h3_lake" style="">湖</h3>
     <hr class="hr1" >
     <br />
-    <form method="post" action="https://www.naver.com/"> <!-- 도착 페이지 -->
+    <form method="post" action="/board/home"> <!-- 도착 페이지 -->
         <div class="div2" style="">
             <input class="Pwd" type="password" style="text-align: center; padding: 5px;" placeholder=""><br /><br />
-            <button class="Enter" style="" onclick="location.href='https://www.naver.com/'">入場</button>
+            <button type="button" class="Enter" style="" onclick="location.href='./board/home' ">入場</button>
         </div>
     </form>
 </div>

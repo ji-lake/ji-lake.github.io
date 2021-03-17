@@ -15,17 +15,17 @@ public class MemberServiceImpl implements MemberService {
 	MemberDAO dao;
 	
 	@Override
-	public void signUp(MemberVO mvo) {
+	public void signUp(MemberVO mvo) throws Exception {
 		dao.signUp(mvo);
 	}	
 
 	@Override
-	public MemberVO loginCheck(MemberVO mvo) {		
+	public MemberVO loginCheck(MemberVO mvo) throws Exception {		
 		return dao.loginCheck(mvo);
 	}
 
 	@Override
-	public void logout(HttpSession session) {
+	public void logout(HttpSession session) throws Exception {
 		dao.logout(session);
 		
 	}

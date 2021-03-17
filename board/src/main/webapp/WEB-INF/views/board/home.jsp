@@ -16,16 +16,22 @@
 	<hr>
 
 	<p>
-		<a href="/board/list">게시물 목록</a><br /> <a href="/board/write">게시물
-			작성</a><br /> <a href="/board/home">HOME</a>
+		<a href="../board/list">게시물 목록</a><br /> <a href="../board/write">게시물
+			작성</a><br /> <a href="../board/home">HOME</a>
 	</p>
 
 	<br />
-	<form>
-		아이디 : <input type="text" placeholder="ID"><br /> 
-		비밀번호 : <input type="password" placeholder="PWD"><br /><br />
-		<button>로그인</button>
-	</form>
+	<c:if test="${member == null}">
+		<form role="form" method="post" autocomplete="off" action="../member/loginCheck">
+			아이디 : <input type="text" placeholder="ID"><br /> 
+			비밀번호 : <input type="password" placeholder="PWD"><br /><br />
+			<button>로그인</button>
+		</form>
+	</c:if>
+	
+	<c:if test="${member != null}">
+		<p>${member.member_id} 님 환영합니다.</p>
+	</c:if>
 
 </body>
 </html>
